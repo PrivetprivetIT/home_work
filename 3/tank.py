@@ -48,31 +48,31 @@ class Tank:
     def forward(self):
         if self.__fuel > 0:
             self.__y += -self.__speed
+            self.__update_hitbox()
             self.__fuel -= 1
             self.__canvas.itemconfig(self.__id, image = self.__skin_up)
             self.__repaint()
-            self.__update_hitbox()
     def backward(self):
         if self.__fuel > 0:
             self.__y += self.__speed
+            self.__update_hitbox()
             self.__fuel -= 1
             self.__canvas.itemconfig(self.__id, image=self.__skin_down)
             self.__repaint()
-            self.__update_hitbox()
     def left(self):
         if self.__fuel > 0:
             self.__x += -self.__speed
+            self.__update_hitbox()
             self.__fuel -= 1
             self.__canvas.itemconfig(self.__id, image=self.__skin_left)
             self.__repaint()
-            self.__update_hitbox()
     def right(self):
         if self.__fuel > 0:
             self.__x += self.__speed
+            self.__update_hitbox()
             self.__fuel -= 1
             self.__canvas.itemconfig(self.__id, image=self.__skin_right)
             self.__repaint()
-            self.__update_hitbox()
 
     def __create(self):
         self.__id = self.__canvas.create_image(self.__x, self.__y,
