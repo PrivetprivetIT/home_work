@@ -17,7 +17,7 @@ def key_press(event):
         player.backward()
     if event.keycode == KEY_A:
         player.left()
-    if event.keycode == KEY_D:
+    if event.keycode == KEY_D:  
         player.right()
     check_collision()
 
