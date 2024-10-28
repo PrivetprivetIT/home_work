@@ -1,4 +1,4 @@
-from Tank import Tank
+from tank import Tank
 from tkinter import*
 
 KEY_W = 87
