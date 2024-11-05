@@ -1,5 +1,6 @@
 class Hitbox:
-    def __init__(self, x, y, width, height):
+    def __init__(self, x, y, width, height, padding = 0):
+        self.padding = padding
         self.__x = x
         self.__y = y
         self.__set_width(width)
@@ -33,13 +34,13 @@ class Hitbox:
 
 
     def __get_top(self):
-        return self.y
+        return self.y + self.padding
     def __get_bottom(self):
-        return self.y + self.height
+        return self.y + self.height - self.padding
     def __get_left(self):
-        return self.x
+        return self.x + self.padding
     def __get_right(self):
-        return self.x + self.width
+        return self.x + self.width - self.padding
 
     def moveto(self, x, y):
         self.__set_x(x)
