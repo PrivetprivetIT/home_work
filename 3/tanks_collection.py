@@ -6,7 +6,7 @@ _tanks = []
 
 _canvas = None
 
-def initialize(canv):
+def initialaze(canv):
     global _canvas
     _canvas = canv
     player = Tank(canvas = canv, x = 100, y = 50, ammo = 100, speed = 1, bot = False)

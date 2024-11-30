@@ -57,6 +57,9 @@ def load_textures():
     texture.load('tank_down', '../img/tank_down.png')
     texture.load('tank_left', '../img/tank_left.png')
     texture.load('tank_right', '../img/tank_right.png')
+    texture.load(world.BRICK, '../img/brick.png')
+    texture.load(world.WATER, '../img/water.png')
+    texture.load(world.CONCRETE, '../img/wall.png')
     print(texture._frames)
 
 w = Tk()
@@ -68,8 +71,9 @@ canv = Canvas(w, width = world.SCREEN_WIDTH, height = world.SCREEN_HEIGHT,
               bg = 'alice blue')
 canv.pack()
 
+world.initialaze(canv)
 
-tanks_collection.initialize(canv)
+tanks_collection.initialaze(canv)
 
 w.bind('<KeyPress>', key_press)
 
