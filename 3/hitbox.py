@@ -9,6 +9,7 @@ class Hitbox:
 
     def __get_width(self):
         return self.__width
+
     def __set_width(self, width):
         if width < 0:
             width = 0
