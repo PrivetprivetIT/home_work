@@ -40,6 +40,13 @@ class Tank:
         self.right()
 
 
+    def __check_map_collision(self):
+        result = self.__hitbox.check_map_collision()
+        if result:
+            self.__undo_move()
+            if self.__bot:
+                self.__AI_change_orintation()
+
     def __check_out_of_world(self):
         if self.__hitbox.left < 0 or self.__hitbox.right > world.get_width() or \
             self.__hitbox.top < 0 or self.__hitbox.bottom > world.get_height():
@@ -126,6 +133,7 @@ class Tank:
             self.__fuel -= self.__speed
             self.__update_hitbox()
             self.__check_out_of_world()
+            self.__check_map_collision()
             self.__repaint()
 
     def __undo_move(self):
