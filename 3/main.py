@@ -51,7 +51,7 @@ def key_press(event):
         world.move_camera(delta_x = 5, delta_y = 0)
 
     elif event.keycode == SPACE:
-        tanks_collection.spawn_enemy()
+        tanks_collection.spawn()
 
 def load_textures():
     texture.load('tank_up', '../img/tank_up.png')

@@ -41,12 +41,16 @@ def create_map(rows = 20, cols = 20):
             row.append(cell)
         _map.append(row)
 
-def update_map():
+def update_map(all = False):
     first_row = get_row(_camera_y)
     last_row = get_row(_camera_y + SCREEN_HEIGHT - 1)
     first_col = get_col(_camera_x)
     last_col = get_col(_camera_x + SCREEN_WIDTH - 1)
-
+    if all:
+        first_row = 0
+        first_col = 0
+        last_row = get_rows() - 1
+        last_col = get_cols() - 1
     for i in range(first_row, last_row + 1):
         for j in range(first_col, last_col + 1):
             update_cell(i, j)
@@ -72,8 +76,15 @@ def set_camera_xy(x, y):
         x = get_width() - SCREEN_WIDTH
     if y > get_height() - SCREEN_HEIGHT:
         y = get_height() - SCREEN_HEIGHT
+
+    update_all = False
+    if abs(_camera_x - x) >= BLOCK_SIZE or abs(_camera_y - y) >= BLOCK_SIZE:
+        update_all = True
     _camera_x = x
     _camera_y = y
+
+    if update_all:
+        update_map(True)
 
 def move_camera(delta_x, delta_y):
     set_camera_xy(_camera_x + delta_x, _camera_y + delta_y)
