@@ -84,7 +84,7 @@ def set_camera_xy(x, y):
     _camera_y = y
 
     if update_all:
-        update_map(True)
+        update_map(all = True)
 
 def move_camera(delta_x, delta_y):
     set_camera_xy(_camera_x + delta_x, _camera_y + delta_y)

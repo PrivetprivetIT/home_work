@@ -10,9 +10,8 @@ def initialaze(canv):
     global _canvas
     _canvas = canv
     spawn(False)
-    for i in range(10):
-        spawn(True)
-    #neutral = Tank(canvas = canv, x = 300, y = 300, ammo = 100, speed = 1, bot = False)
+    for i in range(5):
+        spawn(True).set_target(get_player())
 
 def get_player():
     return _tanks[0]

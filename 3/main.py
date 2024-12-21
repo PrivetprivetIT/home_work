@@ -1,4 +1,4 @@
-from logging import fatal
+
 
 from tank import Tank
 from tkinter import*
