@@ -1,5 +1,3 @@
-
-
 from tank import Tank
 from tkinter import*
 import world

@@ -10,7 +10,7 @@ def initialaze(canv):
     global _canvas
     _canvas = canv
     spawn(False)
-    for i in range(5):
+    for i in range(1):
         spawn(True).set_target(get_player())
 
 def get_player():
