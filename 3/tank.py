@@ -1,4 +1,3 @@
-from tkinter import PhotoImage
 from hitbox import Hitbox
 from tkinter import PhotoImage, NW
 from random import randint
@@ -189,7 +188,7 @@ class Tank:
     def __update_hitbox(self):
         self.__hitbox.moveto(self.__x, self.__y)
 
-    def inersects(self, other_tank):
+    def intersects(self, other_tank):
         value = self.__hitbox.intersects(other_tank.__hitbox)
         if value:
             self.__undo_move()

@@ -1,5 +1,5 @@
 from random import randint
-from tank import Tank
+from units import Tank
 import world
 
 _tanks = []
@@ -10,7 +10,7 @@ def initialaze(canv):
     global _canvas
     _canvas = canv
     spawn(False)
-    for i in range(1):
+    for i in range(3):
         spawn(True).set_target(get_player())
 
 def get_player():
@@ -26,7 +26,7 @@ def check_collision(tank):
     for other_tank in _tanks:
         if tank == other_tank:
             continue
-        if tank.inersects(other_tank):
+        if tank.intersects(other_tank):
             return True
     return False
 
@@ -40,7 +40,7 @@ def spawn(is_bot = True):
         if world.get_block(row, col) != world.GROUND:
             continue
 
-        t = Tank(_canvas, x = col * world.BLOCK_SIZE, y = row * world.BLOCK_SIZE, speed = 2, bot = is_bot)
+        t = Tank(_canvas, row, col, bot = is_bot)
 
         if not check_collision(t):
             _tanks.append(t)
