@@ -61,11 +61,11 @@ class Unit:
         if self._bot:
             self._AI()
         self._dx = self._vx * self._speed
-        self._dy = self._dy * self._speed
+        self._dy = self._vy * self._speed
         self._x += self._dx
         self._y += self._dy
-        self._check_map_collision()
         self._update_hitbox()
+        self._check_map_collision()
         self._repaint()
 
     def _AI(self):
