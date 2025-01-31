@@ -4,6 +4,7 @@ from hitbox import Hitbox
 from tkinter import NW
 from random import randint
 
+
 class Unit:
     def __init__(self, canvas, x, y, speed, padding, bot, default_image):
         self._speed = speed
@@ -221,3 +222,32 @@ class Tank(Unit):
         super()._on_intersects(other_unit)
         if self._bot:
             self._change_orientation()
+
+
+class Missile(Unit):
+    def __init__(self, canvas, owner):
+        super().__init__(canvas, owner.get_x(), owner.get_y(), 6, 20, False, 'missile_up')
+
+        self._forward_image = 'missile_up'
+        self._backward_image = 'missile_down'
+        self._left_image = 'missile_left'
+        self._right_image = 'missile_right'
+        self._owner = owner
+
+
+        if owner.get_vx() == 1 and owner.get_vy() == 0:
+            self.right()
+        elif owner.get_vx() == -1 and owner.get_vy() == 0:
+            self.left()
+        elif owner.get_vx() == 0 and owner.get_vy() == -1:
+            self.forward()
+        elif owner.get_vx() == 0 and owner.get_vy() == 1:
+            self.backward()
+
+    def get_owner(self):
+        return self._owner
+
+    def fire(self):
+        if self._ammo > 0:
+            self._ammo -= 1
+            missiles_collection.fire(self)

@@ -1,8 +1,9 @@
-from tank import Tank
+
 from tkinter import*
 import world
 import tanks_collection
 import texture
+import missiles_collection
 
 KEY_W = 87
 KEY_S = 83
@@ -17,6 +18,7 @@ FPS = 60
 
 def update():
     tanks_collection.update()
+    missiles_collection.update()
 
     player = tanks_collection.get_player()
 
@@ -48,8 +50,10 @@ def key_press(event):
     elif event.keycode == KEY_RIGHT:
         world.move_camera(delta_x = 5, delta_y = 0)
 
+    #elif event.keycode == SPACE:
+        #tanks_collection.spawn()
     elif event.keycode == SPACE:
-        tanks_collection.spawn()
+        player.fire()
 
 def load_textures():
     texture.load('tank_up', '../img/tank_up.png')
@@ -66,6 +70,11 @@ def load_textures():
     texture.load(world.WATER, '../img/water.png')
     texture.load(world.CONCRETE, '../img/wall.png')
     texture.load(world.MISSLE, '../img/bonus.png')
+
+    texture.load('missile_up', '../img/missile_up.png')
+    texture.load('missile_down', '../img/missile_down.png')
+    texture.load('missile_left', '../img/missile_left.png')
+    texture.load('missile_right', '../img/missile_right.png')
     print(texture._frames)
 
 w = Tk()
@@ -79,7 +88,8 @@ canv.pack()
 
 world.initialaze(canv)
 
-tanks_collection.initialaze(canv)
+tanks_collection.initialize(canv)
+missiles_collection.initialize(canv)
 
 w.bind('<KeyPress>', key_press)
 

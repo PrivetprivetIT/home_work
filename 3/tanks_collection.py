@@ -6,7 +6,7 @@ _tanks = []
 
 _canvas = None
 
-def initialaze(canv):
+def initialize(canv):
     global _canvas
     _canvas = canv
     spawn(False)
