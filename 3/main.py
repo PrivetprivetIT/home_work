@@ -1,9 +1,9 @@
-
+import missiles_collection
 from tkinter import*
 import world
 import tanks_collection
 import texture
-import missiles_collection
+
 
 KEY_W = 87
 KEY_S = 83
@@ -13,6 +13,7 @@ KEY_D = 68
 KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN = 37, 39, 38, 40
 
 SPACE = 32
+ENTER = 13
 
 FPS = 60
 
@@ -32,6 +33,9 @@ def key_press(event):
 
     player = tanks_collection.get_player()
 
+    if player.is_destroyed():
+        return
+
     if event.keycode == KEY_W:
         player.forward()
     elif event.keycode == KEY_S:
@@ -50,8 +54,8 @@ def key_press(event):
     elif event.keycode == KEY_RIGHT:
         world.move_camera(delta_x = 5, delta_y = 0)
 
-    #elif event.keycode == SPACE:
-        #tanks_collection.spawn()
+    elif event.keycode == ENTER:
+        tanks_collection.spawn()
     elif event.keycode == SPACE:
         player.fire()
 

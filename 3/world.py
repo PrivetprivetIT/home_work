@@ -41,9 +41,9 @@ def load_map(file_name):
 def initialaze(canv):
     global _canvas, _map
     _canvas = canv
-    create_map(20, 20)
+    #create_map(20, 20)
     #load_map('../map/1.tmap')
-    #load_map('../map/2.tmap')
+    load_map('../map/2.tmap')
     #load_map('../map/3.tmap')
 
 def create_map(rows = 20, cols = 20):
